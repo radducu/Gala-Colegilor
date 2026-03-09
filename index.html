@@ -8,73 +8,109 @@
         :root { --primary: #6c5ce7; --bg: #f8f9fa; --text: #2d3436; }
         body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); display: flex; justify-content: center; padding: 20px; color: var(--text); line-height: 1.5; }
         .container { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); width: 100%; max-width: 500px; }
-        h1 { text-align: center; font-size: 28px; letter-spacing: -1px; margin-bottom: 10px; }
+        h1 { text-align: center; font-size: 28px; letter-spacing: -1px; margin-bottom: 10px; color: #2d3436; }
         .subtitle { text-align: center; color: #636e72; font-size: 14px; margin-bottom: 30px; }
         
-        .section-header { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--primary); margin-top: 30px; letter-spacing: 1px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        .section-header { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--primary); margin-top: 35px; letter-spacing: 1.5px; border-bottom: 2px solid #f1f2f6; padding-bottom: 5px; }
         
-        /* Stil Accordion */
-        .cat-group { margin-top: 15px; border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: 0.3s; }
-        .cat-group:hover { border-color: var(--primary); }
+        .cat-group { margin-top: 15px; border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: 0.3s; background: #fff; }
+        .cat-group:hover { border-color: var(--primary); box-shadow: 0 5px 15px rgba(108, 92, 231, 0.05); }
         
-        .cat-header { width: 100%; padding: 15px; background: white; border: none; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 15px; }
-        .cat-header::after { content: '▼'; font-size: 10px; color: #b2bec3; transition: 0.3s; }
-        .cat-header.active::after { transform: rotate(180deg); }
+        .cat-header { width: 100%; padding: 15px; background: white; border: none; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 15px; color: #2d3436; }
+        .cat-header::after { content: '＋'; font-size: 14px; color: var(--primary); transition: 0.3s; }
+        .cat-header.active::after { content: '－'; transform: rotate(180deg); }
 
-        .cat-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fcfcfd; padding: 0 15px; font-size: 13px; color: #636e72; }
-        .cat-content.open { max-height: 100px; padding: 10px 15px; border-top: 1px solid #f1f2f6; }
+        .cat-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fcfcfd; font-size: 13px; color: #636e72; }
+        .cat-content.open { max-height: 150px; padding: 10px 15px; border-top: 1px solid #f1f2f6; }
 
-        select { width: calc(100% - 30px); margin: 10px 15px 15px; padding: 12px; border: 2px solid #eee; border-radius: 10px; font-size: 16px; outline: none; background: white; }
+        select { width: calc(100% - 30px); margin: 10px 15px 15px; padding: 12px; border: 2px solid #eee; border-radius: 10px; font-size: 16px; outline: none; background: white; cursor: pointer; }
         select:focus { border-color: var(--primary); }
 
-        .btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; font-size: 18px; font-weight: bold; margin-top: 40px; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; font-size: 18px; font-weight: bold; margin-top: 40px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2); }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(108, 92, 231, 0.3); }
 
-        #rezultat { display: none; margin-top: 30px; padding: 25px; background: #f1f2f6; border-radius: 20px; border: 2px solid #dfe4ea; }
-        .res-line { margin-bottom: 8px; font-size: 15px; }
-        .res-line b { color: var(--primary); }
+        #rezultat { display: none; margin-top: 30px; padding: 25px; background: #f1f2f6; border-radius: 20px; border: 2px solid #dfe4ea; animation: slideUp 0.4s ease; }
+        .res-line { margin-bottom: 8px; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+        .res-line b { color: var(--primary); font-weight: 700; }
+        
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>🏆 Gala Colegilor</h1>
-    <p class="subtitle">Apasă pe titlul premiului pentru detalii</p>
+    <p class="subtitle">Apasă pe titlu pentru a vedea descrierea premiului</p>
 
     <div class="section-header">Stâlpii de Rezistență</div>
     
     <div class="cat-group">
         <button class="cat-header" onclick="toggle(this)">🗺️ GPS-ul Organizațional</button>
-        <div class="cat-content">Pentru persoana care știe unde sunt fișierele din 2019, cheia de la magazie și de ce nu merge imprimanta.</div>
-        <select id="v1"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option></select>
+        <div class="cat-content">Pentru persoana care știe unde sunt arhivate fișierele din 2019, unde e cheia de la magazie și de ce nu merge imprimanta. Fără el/ea, am fi încă blocați în parcare.</div>
+        <select id="v1"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
     </div>
 
     <div class="cat-group">
         <button class="cat-header" onclick="toggle(this)">🧘 Zen de Oțel</button>
-        <div class="cat-content">Rămâne calm și când serverul pică, și când cafeaua s-a terminat.</div>
-        <select id="v2"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option></select>
+        <div class="cat-content">Se acordă colegului care rămâne calm și când serverul pică, și când cafeaua s-a terminat, și când vine un task de pe azi pe ieri.</div>
+        <select id="v2"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
     </div>
 
-    <div class="section-header">Lifestyle & Food</div>
-
-    <div class="cat-group">
-        <button class="cat-header" onclick="toggle(this)">🍕 Gaura Neagră</button>
-        <div class="cat-content">Mănâncă enorm (pizza, gogoși, shaorma) dar rămâne incredibil de fit.</div>
-        <select id="v3"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option></select>
-    </div>
+    <div class="section-header">Lifestyle la Birou</div>
 
     <div class="cat-group">
         <button class="cat-header" onclick="toggle(this)">☕ Sommelierul de Cafea</button>
-        <div class="cat-content">Nu poate fi abordat înainte de al treilea espresso.</div>
-        <select id="v4"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option></select>
+        <div class="cat-content">Pentru cel care nu poate fi abordat înainte de prima cană și care consideră că 3 espresso-uri sunt doar un mic dejun ușor.</div>
+        <select id="v3"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
     </div>
 
-    <button class="btn-submit" onclick="afiseaza()">Finalizează Votul</button>
+    <div class="cat-group">
+        <button class="cat-header" onclick="toggle(this)">🎭 Master of GIFs</button>
+        <div class="cat-content">Persoana care are un GIF pregătit pentru orice situație. Comunicarea verbală e supraestimată când ai meme-ul potrivit.</div>
+        <select id="v4"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
+    </div>
+
+    <div class="section-header">Misterele Biroului</div>
+
+    <div class="cat-group">
+        <button class="cat-header" onclick="toggle(this)">🦎 Cameleonul de Ședință</button>
+        <div class="cat-content">Reușește să dea din cap aprobator timp de o oră, în timp ce pe ecranul lui se desfășoară cu totul altceva.</div>
+        <select id="v5"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
+    </div>
+
+    <div class="cat-group">
+        <button class="cat-header" onclick="toggle(this)">🥷 Fantomă, dar Eficient</button>
+        <div class="cat-content">Nu-l vede nimeni la bucătărie, nu știm când vine sau pleacă, dar task-urile lui sunt mereu gata. Un ninja al productivității.</div>
+        <select id="v6"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
+    </div>
+
+    <div class="section-header">Metabolism & Food</div>
+
+    <div class="cat-group">
+        <button class="cat-header" onclick="toggle(this)">🍕 Gaura Neagră</button>
+        <div class="cat-content">Sfidează legile fizicii: mănâncă pizza la micul dejun și shaorma la prânz, dar rămâne tras prin inel.</div>
+        <select id="v7"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
+    </div>
+
+    <div class="cat-group">
+        <button class="cat-header" onclick="toggle(this)">🌬️ Supraviețuitorul Urban</button>
+        <div class="cat-content">Funcționează pe bază de aer și cafea. La ora 16:00 se întreabă: "Oare am mâncat azi?".</div>
+        <select id="v8"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
+    </div>
+
+    <div class="cat-group">
+        <button class="cat-header" onclick="toggle(this)">🍔 Degustătorul Șef</button>
+        <div class="cat-content">Recunoaște curierul după sunetul motorului. Știe exact unde e cea mai bună porție de cartofi din oraș.</div>
+        <select id="v9"><option value="">Alege colegul...</option><option value="Andrei">Andrei</option><option value="Elena">Elena</option><option value="Marius">Marius</option><option value="Ioana">Ioana</option></select>
+    </div>
+
+    <button class="btn-submit" onclick="afiseaza()">Finalizează Biletul de Vot</button>
 
     <div id="rezultat">
-        <h3 style="margin-top:0;">Rezultatele tale:</h3>
+        <h3 style="margin-top:0;">🎉 Nominalizările tale:</h3>
         <div id="lista-finala"></div>
-        <button onclick="window.location.reload()" style="margin-top:15px; border:none; background:none; color:var(--primary); cursor:pointer; font-weight:bold;">Vreun coleg uitat? Votează iar</button>
+        <p style="font-size: 11px; color: #636e72; margin-top: 15px;">Fă un screenshot și trimite-l pe grupul echipei!</p>
+        <button onclick="window.location.reload()" style="margin-top:10px; border:none; background:none; color:var(--primary); cursor:pointer; font-size: 12px;">Vrei să schimbi ceva? Reset</button>
     </div>
 </div>
 
@@ -87,8 +123,9 @@
 
     function afiseaza() {
         const votes = [
-            { id: 'v1', l: 'GPS' }, { id: 'v2', l: 'Zen' },
-            { id: 'v3', l: 'Gaură Neagră' }, { id: 'v4', l: 'Cafea' }
+            { id: 'v1', l: 'GPS' }, { id: 'v2', l: 'Zen' }, { id: 'v3', l: 'Cafea' },
+            { id: 'v4', l: 'GIFs' }, { id: 'v5', l: 'Cameleon' }, { id: 'v6', l: 'Fantomă' },
+            { id: 'v7', l: 'Gaură Neagră' }, { id: 'v8', l: 'Supraviețuitor' }, { id: 'v9', l: 'Degustător' }
         ];
         let out = ""; let err = false;
         votes.forEach(v => {
@@ -96,7 +133,7 @@
             if(!val) err = true;
             out += `<div class="res-line">${v.l}: <b>${val}</b></div>`;
         });
-        if(err) { alert("Alege pe cineva la toate categoriile!"); return; }
+        if(err) { alert("Te rog să alegi un coleg la fiecare categorie!"); return; }
         document.getElementById('lista-finala').innerHTML = out;
         document.getElementById('rezultat').style.display = 'block';
         window.scrollTo(0, document.body.scrollHeight);
