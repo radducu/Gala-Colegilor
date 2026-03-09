@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gala Colegilor</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; border-top: 5px solid #ff4757; }
+        h1 { color: #2f3542; font-size: 20px; }
+        .label-text { display: block; text-align: left; font-weight: bold; margin-top: 15px; color: #57606f; font-size: 14px; }
+        select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ced4da; border-radius: 8px; font-size: 16px; background: #fff; }
+        button { width: 100%; background: #ff4757; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; margin-top: 25px; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #ff6b81; }
+        #rezultat { display: none; margin-top: 20px; padding: 15px; background: #e3fcef; border-radius: 8px; color: #00875a; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🏆 GALA COLEGILOR</h1>
+    <p style="font-size: 13px; color: #747d8c;">Cine ia premiul azi?</p>
+
+    <span class="label-text">🍕 GAURA NEAGRĂ (Mănâncă tot)</span>
+    <select id="v1">
+        <option value="">Alege un coleg...</option>
+        <option value="Andrei">Andrei</option>
+        <option value="Elena">Elena</option>
+        <option value="Marius">Marius</option>
+        <option value="Ioana">Ioana</option>
+    </select>
+
+    <span class="label-text">☕ SUPRAVIEȚUITORUL (Doar cafea)</span>
+    <select id="v2">
+        <option value="">Alege un coleg...</option>
+        <option value="Andrei">Andrei</option>
+        <option value="Elena">Elena</option>
+        <option value="Marius">Marius</option>
+        <option value="Ioana">Ioana</option>
+    </select>
+
+    <button onclick="calculeaza()">VEZI REZULTATUL</button>
+
+    <div id="rezultat">
+        <div id="r1"></div>
+        <div id="r2"></div>
+    </div>
+</div>
+
+<script>
+    function calculeaza() {
+        var n1 = document.getElementById('v1').value;
+        var n2 = document.getElementById('v2').value;
+        if(!n1 || !n2) { alert("Trebuie să votezi în ambele secțiuni!"); return; }
+        
+        document.getElementById('r1').innerHTML = "🥇 " + n1 + " (Gaura Neagră)";
+        document.getElementById('r2').innerHTML = "🥇 " + n2 + " (Supraviețuitorul)";
+        document.getElementById('rezultat').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
