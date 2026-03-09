@@ -3,59 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gala Colegilor</title>
+    <title>Marea Gală a Colegilor</title>
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; border-top: 5px solid #ff4757; }
-        h1 { color: #2f3542; font-size: 20px; }
-        .label-text { display: block; text-align: left; font-weight: bold; margin-top: 15px; color: #57606f; font-size: 14px; }
-        select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ced4da; border-radius: 8px; font-size: 16px; background: #fff; }
-        button { width: 100%; background: #ff4757; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; margin-top: 25px; cursor: pointer; transition: 0.2s; }
-        button:hover { background: #ff6b81; }
-        #rezultat { display: none; margin-top: 20px; padding: 15px; background: #e3fcef; border-radius: 8px; color: #00875a; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; border-top: 8px solid #ff4757; }
+        h1 { color: #2c3e50; font-size: 26px; margin-bottom: 5px; text-transform: uppercase; }
+        p.subtitle { color: #7f8c8d; margin-bottom: 25px; font-style: italic; }
+        .cat { margin-top: 20px; text-align: left; background: #fafafa; padding: 15px; border-radius: 10px; border: 1px solid #eee; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #2c3e50; }
+        small { display: block; margin-bottom: 10px; color: #95a5a6; line-height: 1.2; }
+        select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; outline: none; transition: 0.3s; background: white; }
+        select:focus { border-color: #ff4757; }
+        button { width: 100%; background: #ff4757; color: white; border: none; padding: 18px; border-radius: 10px; font-size: 18px; font-weight: bold; margin-top: 30px; cursor: pointer; box-shadow: 0 4px 0 #c0392b; transition: 0.2s; }
+        button:hover { background: #ff6b81; transform: translateY(2px); box-shadow: 0 2px 0 #c0392b; }
+        #rezultat { display: none; margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 10px; border: 2px dashed #ffc107; text-align: left; }
+        .winner-line { margin-bottom: 10px; font-size: 16px; border-bottom: 1px solid #ffeeba; padding-bottom: 5px; }
+        .winner-line b { color: #d35400; }
     </style>
 </head>
 <body>
 
 <div class="card">
     <h1>🏆 GALA COLEGILOR</h1>
-    <p style="font-size: 13px; color: #747d8c;">Cine ia premiul azi?</p>
+    <p class="subtitle">Clasamentul distractiv al echipei</p>
 
-    <span class="label-text">🍕 GAURA NEAGRĂ (Mănâncă tot)</span>
-    <select id="v1">
-        <option value="">Alege un coleg...</option>
-        <option value="Andrei">Andrei</option>
-        <option value="Elena">Elena</option>
-        <option value="Marius">Marius</option>
-        <option value="Ioana">Ioana</option>
-    </select>
+    <div class="cat">
+        <label>🍕 GAURA NEAGRĂ</label>
+        <small>Sfidează legile fizicii: mănâncă enorm, dar nu se vede deloc pe cântar.</small>
+        <select class="vote-select" id="v1">
+            <option value="">Alege colegul...</option>
+            <option value="Andrei">Andrei</option>
+            <option value="Elena">Elena</option>
+            <option value="Marius">Marius</option>
+            <option value="Ioana">Ioana</option>
+            </select>
+    </div>
 
-    <span class="label-text">☕ SUPRAVIEȚUITORUL (Doar cafea)</span>
-    <select id="v2">
-        <option value="">Alege un coleg...</option>
-        <option value="Andrei">Andrei</option>
-        <option value="Elena">Elena</option>
-        <option value="Marius">Marius</option>
-        <option value="Ioana">Ioana</option>
-    </select>
+    <div class="cat">
+        <label>☕ SUPRAVIEȚUITORUL</label>
+        <small>Funcționează exclusiv pe bază de cafea, aer și determinare pură.</small>
+        <select class="vote-select" id="v2">
+            <option value="">Alege colegul...</option>
+            <option value="Andrei">Andrei</option>
+            <option value="Elena">Elena</option>
+            <option value="Marius">Marius</option>
+            <option value="Ioana">Ioana</option>
+        </select>
+    </div>
 
-    <button onclick="calculeaza()">VEZI REZULTATUL</button>
+    <div class="cat">
+        <label>🧘 ZEN DE OȚEL</label>
+        <small>Rămâne calm și dacă pică serverul, și dacă se termină cafeaua.</small>
+        <select class="vote-select" id="v3">
+            <option value="">Alege colegul...</option>
+            <option value="Andrei">Andrei</option>
+            <option value="Elena">Elena</option>
+            <option value="Marius">Marius</option>
+            <option value="Ioana">Ioana</option>
+        </select>
+    </div>
+
+    <div class="cat">
+        <label>🗺️ GPS-UL ORGANIZAȚIONAL</label>
+        <small>Știe unde sunt actele din 2015 și de ce nu merge imprimanta.</small>
+        <select class="vote-select" id="v4">
+            <option value="">Alege colegul...</option>
+            <option value="Andrei">Andrei</option>
+            <option value="Elena">Elena</option>
+            <option value="Marius">Marius</option>
+            <option value="Ioana">Ioana</option>
+        </select>
+    </div>
+
+    <button onclick="genereaza()">VEZI CLASAMENTUL TĂU</button>
 
     <div id="rezultat">
-        <div id="r1"></div>
-        <div id="r2"></div>
+        <h3 style="margin-top:0;">🎉 Nominalizările tale:</h3>
+        <div id="r-list"></div>
+        <p style="font-size: 12px; color: #7f8c8d; margin-top: 15px;">Fă un screenshot și trimite-l pe grupul de chat!</p>
+        <button onclick="window.location.reload()" style="background:#7f8c8d; padding:10px; font-size:14px; box-shadow:none;">RESETEAZĂ</button>
     </div>
 </div>
 
 <script>
-    function calculeaza() {
-        var n1 = document.getElementById('v1').value;
-        var n2 = document.getElementById('v2').value;
-        if(!n1 || !n2) { alert("Trebuie să votezi în ambele secțiuni!"); return; }
-        
-        document.getElementById('r1').innerHTML = "🥇 " + n1 + " (Gaura Neagră)";
-        document.getElementById('r2').innerHTML = "🥇 " + n2 + " (Supraviețuitorul)";
+    function genereaza() {
+        const cats = [
+            { id: 'v1', label: 'Gaura Neagră' },
+            { id: 'v2', label: 'Supraviețuitorul' },
+            { id: 'v3', label: 'Zen de Oțel' },
+            { id: 'v4', label: 'GPS-ul Biroului' }
+        ];
+
+        let html = "";
+        let complet = true;
+
+        cats.forEach(c => {
+            const val = document.getElementById(c.id).value;
+            if(!val) complet = false;
+            html += `<div class="winner-line">🏆 ${c.label}: <b>${val}</b></div>`;
+        });
+
+        if(!complet) {
+            alert("Te rugăm să alegi un coleg pentru fiecare categorie!");
+            return;
+        }
+
+        document.getElementById('r-list').innerHTML = html;
         document.getElementById('rezultat').style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
     }
 </script>
 
